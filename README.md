@@ -179,6 +179,66 @@ In Delphi, `.dfm` stands for **Delphi Form Module**. It is a file format used to
 5. **How It Works in the IDE**:
    - When you use the Delphi IDE to drag-and-drop components (e.g., buttons, text boxes), their properties and layout are automatically stored in the `.dfm` file.
    - During runtime, the `.dfm` file is loaded to render the visual interface.
+  
+   In Delphi, a `.pas` file is a **Pascal source code file** that contains the implementation of the logic, functionality, and event handlers for a form or unit in a Delphi application. It uses the **Object Pascal language**, which is Delphi's programming language.
+
+### Key Points About `.pas`:
+1. **Purpose**:
+   - It holds the **code behind** a form or module, defining classes, procedures, functions, and event handlers that control the behavior of the application.
+
+2. **Structure**:
+   A `.pas` file typically has two main sections:
+   - **Interface**: Declares the class, methods, and variables that are accessible to other units.
+   - **Implementation**: Contains the actual code for the methods and functions declared in the interface.
+
+   Example Structure:
+   ```pascal
+   unit Unit1; // The name of the unit
+   
+   interface
+
+   uses
+     System.SysUtils, System.Classes, Vcl.Controls, Vcl.Forms, Vcl.StdCtrls;
+
+   type
+     TForm1 = class(TForm) // Defines the form class
+       Button1: TButton;   // A button component
+       procedure Button1Click(Sender: TObject); // Event handler
+     end;
+
+   var
+     Form1: TForm1; // Global variable for the form
+
+   implementation
+
+   {$R *.dfm} // Links to the corresponding .dfm file
+
+   procedure TForm1.Button1Click(Sender: TObject);
+   begin
+     ShowMessage('Hello from the .pas file!');
+   end;
+
+   end.
+   ```
+
+3. **Components of a `.pas` File**:
+   - **Unit Declaration**: Each `.pas` file starts with the `unit` keyword followed by the unit name.
+   - **Uses Clause**: Specifies the libraries or other units the code depends on (e.g., `Vcl.Forms` for GUI applications).
+   - **Type Declaration**: Defines classes, records, and other types (e.g., `TForm1` for the main form).
+   - **Methods and Functions**: Includes the logic for event handling and other functionality.
+   - **Global Variables**: Declares variables that can be accessed globally within the application.
+
+4. **Linking with `.dfm`**:
+   - The directive `{$R *.dfm}` links the `.pas` file to its corresponding `.dfm` file, ensuring the visual design is associated with the code.
+
+5. **Event Handling**:
+   - The `.pas` file is where you write the logic for events triggered by GUI components (e.g., what happens when a button is clicked).
+
+6. **File Name**:
+   - The `.pas` file name usually corresponds to the form or unit it represents. For example, `Unit1.pas` is paired with `Unit1.dfm`.
+
+### Summary:
+The `.pas` file is the **brain** of a Delphi application, where the logic and behavior are implemented. While the `.dfm` file handles the **visual design**, the `.pas` file provides the **functionality and event-driven programming**. Together, they form the core of Delphi's RAD (Rapid Application Development) framework.
 
 6. **Manual Editing**:
    - While you can manually edit `.dfm` files in text mode, it's generally recommended to use the Delphi form designer to avoid errors.
